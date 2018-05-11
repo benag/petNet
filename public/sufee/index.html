@@ -1,0 +1,599 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PetNet</title>
+    <meta name="description" content="PetNet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="assets/scss/style.css">
+    <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
+</head>
+<body ng-app="ack">
+
+
+   
+
+        <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="./">PetNet</a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            </div>
+
+            <div id="main-menu" ng-controller="nav" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    </li>
+                    <h3 class="menu-title">Participants</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Vacines</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Vacines</a></li>                           
+                        </ul>
+                    </li>
+                    <li  class="menu-item-has-children dropdown">
+                        <a ng-click="setAnimals()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="menu-icon fa fa-laptop"></i>Animals</a>
+                        <!-- <ul class="sub-menu children dropdown-menu">
+                            <li>
+                                <i class="fa fa-puzzle-piece"></i>
+                                <a href="ui-buttons.html">Vacines</a>
+                            </li>
+                        </ul> -->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                     
+
+                        <div class="dropdown for-message">
+                     
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                                <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+
+                                <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+
+                                <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+
+                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
+                    </div>
+
+                    <div class="language-select dropdown" id="language-select">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                            <i class="flag-icon flag-icon-us"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="language" >
+                            <div class="dropdown-item">
+                                <span class="flag-icon flag-icon-fr"></span>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-es"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-us"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-it"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3" ng-controller="main">
+
+           
+            <div ng-init="init()" ng-show="!animal" class="top-nav">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-one">
+                                <div class="stat-icon dib">
+                                    <i class="ti-money text-success border-success"></i>
+                                </div>
+                                <div class="stat-content dib">
+                                    <div class="stat-text">Total Profit</div>
+                                    <div class="stat-digit">1,012</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-one">
+                                <div class="stat-icon dib">
+                                    <i class="ti-user text-primary border-primary"></i>
+                                </div>
+                                <div class="stat-content dib">
+                                    <div class="stat-text">Pets</div>
+                                    <div class="stat-digit" ng-model="pets"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-one">
+                                <div class="stat-icon dib">
+                                    <i class="ti-layout-grid2 text-warning border-warning"></i>
+                                </div>
+                                <div class="stat-content dib">
+                                    <div class="stat-text">Num of Vacinnes</div>
+                                    <div ng-model="numOfVacines" class="stat-digit"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div ng-show="animal" class="content">
+                <div class="">
+                    <form>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">Enter Pet Id</label>
+                                <input type="email" class="form-control" style="width: 50%; margin-bottom: 10px;"id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Pet ID">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            
+                        </div>
+                        
+                    </form>                
+                </div>
+            </div>
+            <div ng-show="vaccines" class="content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Id
+                            </th>
+                            <th scope="col">
+                                 Kind
+                            </th>
+                            <th scope="col">
+                                 factory
+                            </th>
+                            <th scope="col">
+                                 balance
+                            </th>
+                        </tr>
+                        
+
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="vacin in vaccines track by $index">
+                            <td>
+                                {{vacin.VaxinId}}
+                            </td>
+                             <td>
+                                 {{vacin.Kind}}
+                            </td>
+                             <td>
+                                 {{vacin.factory}}
+                            </td>
+                            <td>
+                                {{vacin.balance}}
+                            </td>
+                        </tr> 
+                    </tbody>
+                </table>
+                <div>
+                    <button ng-click="addVacin()" class="btn btn-info">Add new Vaccin</button>
+                </div>
+            </div>
+           
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <div class="modal" id="loginModal" ng-controller="login" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{title}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div ng-show="login">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Participant Id</label>
+                                <input type="text" ng-model="pid" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Id">
+                            </div>        
+                        </form>
+                    </div>
+                    <div ng-show="!login">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Role</label>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        {{type}}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" ng-click="typeFunc('Vet')" href="#">Vet</a>
+                                        <a class="dropdown-item" ng-click="typeFunc('Owner')" href="#">Owner</a>
+                                        <a class="dropdown-item" ng-click="typeFunc('Factory')" href="#">Factory</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="exampleInputEmail1">Role</label>
+                                <input type-"text" ng-model="user.location">
+                            </div> -->
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Address</label>
+                                <input type="text" ng-model="user.address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Address">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-show="login" ng-click="submit()" class="btn btn-primary">Login</button>
+                    <button type="button" ng-show="!login" ng-click="register()" class="btn btn-primary">Register</button>
+                    
+                    <!-- <a ng-show="!login" ng-click="login = true">login</a> -->
+                </div>
+                <a href="#" ng-show="login" ng-click="login = !login" style="margin-bottom: 10px; margin: 0 auto; color: cornflowerblue;" >not a member, register</a>
+                <a href="#" ng-show="!login" ng-click="login = !login" style="margin-bottom: 10px; margin: 0 auto; color: cornflowerblue;">Login</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="vaccinModal" ng-controller="vaccin" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New Vaccin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Vacin Kind</label>
+                                <input type="text" ng-model="vacine.Kind" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Kind">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Vacin balance</label>
+                                <input type="text" ng-model="vacine.balance" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter balance">
+                            </div>
+    
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-click="addVaccin()" class="btn btn-primary">Create</button>
+                    <!-- <button type="button" ng-show="!login" ng-click="register()" class="btn btn-primary">Register</button> -->
+    
+                    <!-- <a ng-show="!login" ng-click="login = true">login</a> -->
+                </div>
+                <!-- <a href="#" ng-show="login" ng-click="login = !login" style="margin-bottom: 10px; margin: 0 auto; color: cornflowerblue;">not a member, register</a>
+                <a href="#" ng-show="!login" ng-click="login = !login" style="margin-bottom: 10px; margin: 0 auto; color: cornflowerblue;">Login</a> -->
+            </div>
+        </div>
+    </div>
+    <!-- Right Panel -->
+
+    <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    
+    <script src="assets/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/widgets.js"></script>
+    <script src="assets/js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="assets/js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script>
+        (function ($) {
+                
+            var app = angular.module('ack', []);
+
+            // app.config(function ($rootScope) {
+            //     $rootScope.baseURL = 'http://ecc1d14a.ngrok.io/api/';
+            // })
+            app.controller('main', ['$scope', '$rootScope','$location', 'backService','$http',
+                function ($scope, $rootScope, $location, backService, $http) {
+
+                    $scope.animal = false;
+                    $scope.baseUrl = 'http://33cb7021.ngrok.io/api/';
+
+                    $rootScope.$on('showAnimal', ()=>{
+                        $scope.animal=true;
+                    })
+                    $rootScope.$on('showVaccines', () => {
+                        $scope.vaccines = true;
+                    })
+                        
+                   
+                    $scope.addVacin = () =>{
+                        $('#vaccinModal').modal('toggle');
+                    }
+
+                    $rootScope.$on('login', () => {
+                        
+                         $http.get($scope.baseUrl + 'petnet.Vaxin')
+                        .then((data)=> {
+                            console.log(data);
+                            $scope.vaccines = data.data;
+                            $scope.vaccines.forEach((vac)=>{
+                                let slitArr = vac.factory.split('#')[1];
+                                vac.factory = slitArr;
+                            })
+                            $scope.numOfVacines = $scope.vaccines.length;
+                            $('#loginModal').modal('toggle');
+                        })
+                    })
+
+                    $scope.init = ()=>{
+                        $('#loginModal').modal('toggle');
+                        
+                        // $http.get($scope.baseUrl + 'petnet.Vaxin')
+                        // .then((data)=> {
+                        //     console.log(data);
+                        //     $scope.vaccines = data.data;
+                        //     $scope.numOfVacines = $scope.vaccines.length;
+                        // })
+
+                    }
+                }
+            ]);
+
+            app.controller('vaccin', ['$scope', '$rootScope', '$http', 'backService', 'global', function ($scope, $rootScope, $http, backService, global) {    
+                $scope.vacine = {};
+                
+                $scope.addVaccin = () =>{
+                    $scope.vacine.VaxinId = Date.now();
+                    $scope.vacine.DateMnf = '01/01/2018';
+                    $scope.vacine.DateExp = '01/01/2018';
+                    $scope.vacine.factory = 'F1';
+                    backService.createVaccin($scope.vacine)
+                    .then((data)=>{
+                        $('#vaccinModal').modal('toggle');
+                    })
+                }
+            }])
+            
+            app.controller('login', ['$scope', '$rootScope','$http','backService','global', function($scope,$rootScope, $http, backService, global){
+                $scope.login = true;
+                $scope.title ='Log In';
+                $scope.pid ='';
+                $scope.type = 'Vet';
+                $scope.user = {};
+
+                $scope.register = function(){
+                    
+                    let data = {
+                        // name: $scope.user.name,
+                        // address: "test address",
+                        location: 'telaviv',
+                        role: $scope.type,
+                        description:'test',
+                       
+                    }
+                    if ($scope.type === 'Vet') data.PetOwnerId = Date.now();
+                    if ($scope.type === 'Owner') data.vetrinarId = Date.now();
+                    if ($scope.type === 'Factory'){
+                        data.FactoryVaxinId = Date.now();
+                        data.address = $scope.user.address;
+                        data.location = $scope.user.address;
+                    } 
+                    backService.createUser(data)
+                    .then((data)=>{
+                        global.user = data;
+                        $rootScope.$broadcast('login');
+                        //$('#loginModal').modal('toggle');
+                    })
+
+                }
+                $scope.typeFunc = (type)=>{
+                    $scope.type = type;
+
+                }
+                $scope.submit = function(){
+                    backService.getUser($scope.pid)
+                    .then((data)=>{
+                        if (data.data) {
+                            global.user = data.data[0];
+                            $rootScope.$broadcast('login');
+                            $('#loginModal').modal('toggle');
+                        }
+
+                    })
+
+                }
+            }]);
+
+            app.controller('nav', ['$scope', '$rootScope', '$location', 'backService',
+                    function ($scope, $rootScope, $location, backService) {
+
+                        $scope.animal = false;
+
+                        $scope.setAnimals = () => {
+                            $rootScope.animal = true;
+                            $rootScope.$broadcast('showAnimal'); 
+                            
+                        }
+                        $scope.setVacinnes = () => {
+                            $rootScope.$broadcast('showVaccines');
+
+                        }
+                        
+                    }
+                ]);
+
+           app.factory('global', function ($timeout, $location, $q, $rootScope, $http) {
+               return{
+
+               }
+           });         
+           app.factory('backService', function ( $timeout, $location, $q, $rootScope,$http, global) {
+                return {
+                    baseUrl: "http://33cb7021.ngrok.io/api/",
+                    getUser: (id)=>{
+                        $http.get('http://33cb7021.ngrok.io/api/' + 'petnet.FactoryVaxin/' + id)
+                        .then((data)=>{
+                            if (data.data){
+                                global.user = data.data;
+                                $rootScope.$broadcast('login');
+                            }else{
+                                $http.get('http://33cb7021.ngrok.io/api/' + 'petnet.PetOwner/' + id)
+                                .then((data) => {
+                                    if (data.data){
+                                        global.user = data.data;
+                                        $rootScope.$broadcast('login');
+                                    }
+                                })
+                            }
+                        })
+                      
+                    },
+                    createUser: function(user) {
+                        if (user.role === 'Owner' ){
+                            return $http.post('http://33cb7021.ngrok.io/api/' + 'petnet.PetOwner/',user)
+                        }
+                        if (user.role === 'Vet') {
+                            return $http.post('http://33cb7021.ngrok.io/api/' + 'petnet.PetOwner/', user)
+                        }
+                        if (user.role === 'Factory') {
+                            return $http.post('http://33cb7021.ngrok.io/api/' + 'petnet.FactoryVaxin/', user)
+                        }
+
+
+                    },
+                    createVaccin: (vaccine)=>{
+                        return $http.post('http://33cb7021.ngrok.io/api/' + 'petnet.Vaxin/', vaccine)
+                    },
+                    getAllVacines: function () {
+                        return $http.get(baseUrl + 'petnet.Vaxin')
+                    },
+                    getAllVacines: function () {
+
+                    }
+                }
+           });
+        
+            // app.service('backService', function ( $http) {
+            //     return {
+            //         baseUrl: "http://ecc1d14a.ngrok.io/",
+            //         getAllVacines: function () {
+            //             return $http.get(baseUrl + 'Vaxin')
+            //         },
+            //         getAllVacines: function () {
+
+            //         }
+                        
+            //     }
+        
+            // });
+        }(jQuery));
+        
+
+        
+    </script>
+
+</body>
+</html>
